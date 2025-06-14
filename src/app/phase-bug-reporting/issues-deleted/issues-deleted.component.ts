@@ -14,8 +14,8 @@ export class IssuesDeletedComponent implements OnInit {
   readonly displayedColumns = [TABLE_COLUMNS.NO, TABLE_COLUMNS.TITLE, TABLE_COLUMNS.TYPE, TABLE_COLUMNS.SEVERITY, TABLE_COLUMNS.ACTIONS];
   readonly actionButtons: ACTION_BUTTONS[] = [ACTION_BUTTONS.VIEW_IN_WEB, ACTION_BUTTONS.FIX_ISSUE, ACTION_BUTTONS.RESTORE_ISSUE];
 
-  selectedSeverity: string = '';
-  selectedType: string = '';
+  selectedSeverity = '';
+  selectedType = '';
   filter: (issue: Issue) => boolean;
 
   @ViewChild(IssueTablesComponent, { static: true }) table: IssueTablesComponent;
