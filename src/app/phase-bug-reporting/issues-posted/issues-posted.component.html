@@ -8,14 +8,33 @@
       </div>
     </mat-grid-tile>
 
-    <mat-grid-tile>
-      <mat-form-field class="full-grid-width">
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search" />
-      </mat-form-field>
-    </mat-grid-tile>
+    <mat-grid-tile colspan="2">
+      <div style="display: flex; align-items: center; gap: 16px; width: 100%">
+        <mat-form-field style="flex: 1; min-width: 200px">
+          <input matInput (keyup)="applySearchFilter($event.target.value)" placeholder="Search" />
+        </mat-form-field>
 
-    <mat-grid-tile>
-      <div class="grid-flush-right">
+        <mat-form-field appearance="fill" style="min-width: 150px; font-size: 12px">
+          <mat-label>Filter by Severity</mat-label>
+          <mat-select (selectionChange)="applySeverityFilter($event.value)">
+            <mat-option value="">All</mat-option>
+            <mat-option value="VeryLow">Very Low</mat-option>
+            <mat-option value="Low">Low</mat-option>
+            <mat-option value="Medium">Medium</mat-option>
+            <mat-option value="High">High</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="min-width: 150px; font-size: 12px">
+          <mat-label>Filter by Type</mat-label>
+          <mat-select (selectionChange)="applyTypeFilter($event.value)">
+            <mat-option value="">All</mat-option>
+            <mat-option value="DocumentationBug">Documentation Bug</mat-option>
+            <mat-option value="FeatureFlaw">Feature Flaw</mat-option>
+            <mat-option value="FunctionalityBug">Functionality Bug</mat-option>
+          </mat-select>
+        </mat-form-field>
+
         <button
           *ngIf="permissions.isIssueCreatable()"
           mat-stroked-button
